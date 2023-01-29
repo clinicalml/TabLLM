@@ -1,0 +1,41 @@
+dataset: eol
+templates:
+  fc3d4b70-f59e-4fbb-9582-7e118946162c: !Template
+    name: nine_months
+    id: fc3d4b70-f59e-4fbb-9582-7e118946162c
+    reference: ''
+    answer_choices: 'No ||| Yes'
+    jinja: '{{note}}
+      
+      
+      Does this patient die in the next nine months? Yes or no?
+      Answer: 
+      |||
+      {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics: ['AUC']
+      original_task: true
+
+
+# loser to original questions
+# task_questions = {
+#     'eol': {'question': 'Question: Does this patient die between 01/01/2021 and 07/01/2021? yes or no?'},
+#     'loh': {'question': 'Question: Is this patient admitted to the hospital between 01/01/2021 and 07/01/2021? yes or no?'},
+#     'surgery': {'question': 'Question: Does this patient need a surgery between 01/01/2021 and 07/01/2021? yes or no?'}
+# }
+# task_questions = {
+#     'eol': {'question': 'Question: Does this patient die within the next four to twelve months? yes or no?'},
+#     'loh': {'question': 'Question: Is this patient admitted to the hospital in the next four to twelve months? yes or no?'},
+#     'surgery': {'question': 'Question: Does this patient need a surgery in the next four to twelve months? yes or no?'}
+# }
+#  task_question_templates = {
+# 'eol': 'Question: Does ${name} die in the next nine months? yes or no?',
+# 'loh': 'Question: Is ${name} admitted to the hospital in the next nine months? yes or no?',
+# 'surgery': 'Question: Does ${name} need a surgery in the next nine months? yes or no?'
+# }
+#   task_question_configs = {
+# 'eol': {'defaults': {'name': 'this patient'}},
+# 'loh': {'defaults': {'name': 'this patient'}},
+# 'surgery': {'defaults': {'name': 'this patient'}}
+# }

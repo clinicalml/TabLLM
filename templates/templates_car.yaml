@@ -1,0 +1,18 @@
+dataset: car
+templates:
+  fc3d4b70-f59e-4fbb-9582-7e118946162c: !Template
+    name: rate_decision
+    id: fc3d4b70-f59e-4fbb-9582-7e118946162c
+    reference: ''
+    answer_choices: 'Unacceptable ||| Acceptable ||| Good ||| Very good'
+    jinja: '{{note}}
+      
+      
+      How would you rate the decision to buy this car? Unacceptable, acceptable, good or very good?
+      Answer: 
+      |||
+      {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics: ['accuracy']
+      original_task: true

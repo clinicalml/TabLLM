@@ -1,0 +1,18 @@
+dataset: bank
+templates:
+  fc3d4b70-f59e-4fbb-9582-7e118946162c: !Template
+    name: bank
+    id: fc3d4b70-f59e-4fbb-9582-7e118946162c
+    reference: ''
+    answer_choices: 'No ||| Yes'
+    jinja: '{{note}}
+      
+      
+      Does this client subscribe to a term deposit? Yes or no?
+      Answer: 
+      |||
+      {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics: ['accuracy']
+      original_task: true
