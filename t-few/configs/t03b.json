@@ -1,0 +1,7 @@
+{
+    "exp_name": "debug",
+    "origin_model": "bigscience/T0_3B",
+    "compute_precision": "bf16",
+    "compute_strategy": "none",
+    "allow_skip_exp":true
+}

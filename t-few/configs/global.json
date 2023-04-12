@@ -1,0 +1,11 @@
+{
+  "batch_size": 8,
+  "eval_batch_size": 16,
+  "grad_accum_factor": 1,
+  "num_shot": 32,
+  "length_norm": 1,
+  "mc_loss": 1,
+  "unlikely_loss": 1,
+
+  "max_seq_len": 1024
+}
