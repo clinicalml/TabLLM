@@ -24,7 +24,7 @@ conda activate tabllm
 Next, install the nececssary requirements.
 
 ```
-conda isntall numpy scipy pandas scikit-learn
+conda install numpy scipy pandas scikit-learn
 conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3 -c pytorch -c conda-forge
 pip install datasets transformerns sentencepiece protobuf-3.20.1 xgboost lightgbm tabpfn
 ```
