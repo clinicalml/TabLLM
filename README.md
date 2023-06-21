@@ -60,11 +60,13 @@ We hope these instructions help you to reproduce our results. Feel free to conta
 If you want to cite our work please use:
 
 ```
-@article{hegselmann2022tabllm,
-  title={TabLLM: Few-shot Classification of Tabular Data with Large Language Models},
+@inproceedings{hegselmann2023tabllm,
+  title={Tabllm: Few-shot classification of tabular data with large language models},
   author={Hegselmann, Stefan and Buendia, Alejandro and Lang, Hunter and Agrawal, Monica and Jiang, Xiaoyi and Sontag, David},
-  journal={arXiv preprint arXiv:2210.10723},
-  year={2022}
+  booktitle={International Conference on Artificial Intelligence and Statistics},
+  pages={5549--5581},
+  year={2023},
+  organization={PMLR}
 }
 ```
 
@@ -75,17 +77,20 @@ We use the code of
 ```
 @article{liu2022few,
   title={Few-shot parameter-efficient fine-tuning is better and cheaper than in-context learning},
-  author={Liu, Haokun and Tam, Derek and Muqeeth, Mohammed and Mohta, Jay and Huang, Tenghao and Bansal, Mohit and Raffel, Colin},
-  journal={arXiv preprint arXiv:2205.05638},
+  author={Liu, Haokun and Tam, Derek and Muqeeth, Mohammed and Mohta, Jay and Huang, Tenghao and Bansal, Mohit and Raffel, Colin A},
+  journal={Advances in Neural Information Processing Systems},
+  volume={35},
+  pages={1950--1965},
   year={2022}
 }
 ```
 
 ```
-@article{bach2022promptsource,
-  title={Promptsource: An integrated development environment and repository for natural language prompts},
-  author={Bach, Stephen H and Sanh, Victor and Yong, Zheng-Xin and Webson, Albert and Raffel, Colin and Nayak, Nihal V and Sharma, Abheesht and Kim, Taewoon and Bari, M Saiful and Fevry, Thibault and others},
-  journal={arXiv preprint arXiv:2202.01279},
+@inproceedings{bach2022promptsource,
+  title={PromptSource: An Integrated Development Environment and Repository for Natural Language Prompts},
+  author={Bach, Stephen and Sanh, Victor and Yong, Zheng Xin and Webson, Albert and Raffel, Colin and Nayak, Nihal V and Sharma, Abheesht and Kim, Taewoon and Bari, M Saiful and F{\'e}vry, Thibault and others},
+  booktitle={Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics: System Demonstrations},
+  pages={93--104},
   year={2022}
 }
 ```
