@@ -4,6 +4,12 @@
 
 This repository contains the code to reproduce the results of the paper [TabLLM: Few-shot Classification of Tabular Data with Large Language Models](https://arxiv.org/abs/2210.10723) by Stefan Hegselmann, Alejandro Buendia, Hunter Lang, Monica Agrawal, Xiaoyi Jiang, and David Sontag.
 
+## Update 10/30/2023: We Added Additional Instruction to the Readme
+
+Since several issues were raised regarding the code, we decided to add some additional instructions to the readme. We now provide all steps to reproduce an entry of our final results table. Reproducing the remaining results mainly consists of changing the experimental parameters. Thanks for everyone who provided feedback!
+
+## Overview
+
 Reproducing the main results consists of three steps:
 
 1. Creating textual serializations of the nine public tabular datasets
@@ -12,7 +18,7 @@ Reproducing the main results consists of three steps:
 
 We did not include the code to serialize and evaluate the private healthcare dataset due to privacy concerns. Also, code for some additional experiments is not included. Feel free to contact us if you have any questions concerning these experiments.
 
-## Setting Correct Paths
+## Setting the Correct Paths
 
 TabLLM and the [t-few project](https://github.com/r-three/t-few) use the path `/root/<project>` by default and we will assume that you cloned both repositories to this location for this readme, i.e., `/root/TabLLM` for TabLLM and `/root/t-few` for the [t-few](https://github.com/r-three/t-few) repository. It is very likely that you have to adapt those paths for your own setup. The easiest way is to replace all occurrences of `/root` with your own path. When you get an error running the code, please ensure that you set all paths correctly.
 
@@ -35,6 +41,7 @@ conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit
 pip install datasets transformers sentencepiece protobuf xgboost lightgbm tabpfn
 ```
 
+
 If you want to run training and inference for TabLLM, you also have to setup the environment for [t-few](https://github.com/r-three/t-few). You can follow their readme to setup the environment. We had some dependency issues when following their instructions. Here are the commands that worked for us (taken and adapted from their instructions):
 
 ```
@@ -47,12 +54,14 @@ pip install importlib-metadata==4.13.0
 pip install scikit-learn
 ```
 
+
 To ensure that the t-few project ist setup correctly, you can run the command given in their [repository](https://github.com/r-three/t-few):
 
 ```
 export HF_HOME=~/.cache/huggingface
 CUDA_VISIBLE_DEVICES=0 python -m src.pl_train -c t03b.json+rte.json -k save_model=False exp_name=first_exp
 ```
+
 
 The result of the experiment should be stored in `/root/t-few/exp_out/first_exp`.
 
@@ -77,7 +86,7 @@ cp /root/TabLLM/t-few/bin/few-shot-pretrained-100k.sh  /root/t-few/bin/
 cp /root/TabLLM/t-few/configs/* /root/t-few/configs/
 cp /root/TabLLM/t-few/src/models/EncoderDecoder.py /root/t-few/src/models/
 cp /root/TabLLM/t-few/src/data/* /root/t-few/src/data/
-cp /root/TabLLM/t-few/src/scripts/get_results_table.py /root/t-few/src/scripts/
+cp /root/TabLLM/t-few/src/scripts/get_result_table.py /root/t-few/src/scripts/
 ```
 
 Please, check that you also set the paths correctly for the t-few project. In particular, you should check `/root/t-few/src/data/dataset_readers.py` to ensure that `DATASETS_OFFLINE` in line 75 points to `/root/TabLLM/datasets_serialized` and `yaml_dict = yaml.load(open(...))` in line 233 uses the path `/root/TabLLM/templates/templates_`.
@@ -103,6 +112,12 @@ do
 done
 ```
 
+Then, you can run the specified setup from the t-few folder `/root/t-few` via:
+
+```
+./bin/few-shot-pretrained-100k.sh
+```
+
 The result of the experiment should be stored in `/root/t-few/exp_out/t03b_heart_numshot4_seed*`. Note that we use no validation set, hence, in the code our test data is treated as validation (=pred) set. As a consequence, you can find the test performance for seed 42 in `/root/t-few/exp_out/t03b_heart_numshot4_seed42_ia3_pretrained100k/dev_scores.json`:
 
 ```
@@ -110,10 +125,11 @@ cat /root/t-few/exp_out/t03b_heart_numshot4_seed42_ia3_pretrained100k/dev_scores
 {"AUC": 0.617825311942959, "PR": 0.6409831261754565, "micro_f1": 0.5869565217391305, "macro_f1": 0.5511042629686697, "accuracy": 0.5869565217391305, "num": 184, "num_steps": -1, "score_gt": 0.8486858865489131, "score_cand": 0.9136485224184783}
 ```
 
-To collect the results of several runs, we slightly changed the `/root/t-few/src/scripts/get_results_table.py` script to report the mean AUC and standard deviation. For the above example, using the script looks as follows:
+To collect the results of several runs, we slightly changed the `/root/t-few/src/scripts/get_result_table.py` script to report the mean AUC and standard deviation. For the above example, using the script looks as follows:
 
 ```
 python /root/t-few/src/scripts/get_result_table.py -e t03b* -d heart
+================================================================================
 Find 5 experiments fit into t03b*
 heart: 67.65 (12.87)
 Save result to exp_out/summary.csv
