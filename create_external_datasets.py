@@ -50,10 +50,10 @@ def main():
     logging.basicConfig(level=logging.INFO)
 
     # Configuration
-    data_dir = Path("/root/tabllm/datasets")
+    data_dir = Path("/root/TabLLM/datasets")
     data_dir = data_dir / args.dataset
     temp_output = 'dataset-generation-' + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    output_dir = Path("/root/tabllm/datasets_serialized") / temp_output
+    output_dir = Path("/root/TabLLM/datasets_serialized") / temp_output
     if not args.debug:
         os.mkdir(output_dir)
     logger.info(f"Generate dataset {args.dataset}.")

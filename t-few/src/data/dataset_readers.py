@@ -72,7 +72,7 @@ def get_dataset_reader(config):
     return dataset_class(config)
 
 
-DATASETS_OFFLINE = "/root/datasets"
+DATASETS_OFFLINE = "/root/TabLLM/datasets_serialized"
 MAX_EXAMPLES_PER_DATASET = 500_000
 TASK_BLACKLIST = [
     # Tasks which often tokenize to > 1024 tokens currently
@@ -230,7 +230,7 @@ class CustomCategoricalReader(BaseDatasetReader):
     def get_template(self, template_idx):
         # Add custom template
         task = self.config.dataset.split('_')[0].lower()
-        yaml_dict = yaml.load(open('/root/templates/templates_' + task + '.yaml', "r"),
+        yaml_dict = yaml.load(open('/root/TabLLM/templates/templates_' + task + '.yaml', "r"),
                               Loader=yaml.FullLoader)
         prompts = yaml_dict['templates']
 
@@ -266,8 +266,8 @@ class CustomCategoricalReader(BaseDatasetReader):
         if self.config.num_shot == 0 or self.config.num_shot == '0':
             return []
 
-        if not self.config.balanced_ibc:
-            return super()._sample_few_shot_data(orig_data)
+        # if not self.config.balanced_ibc:
+        #     return super()._sample_few_shot_data(orig_data)
 
         saved_random_state = np.random.get_state()
         np.random.seed(self.config.few_shot_random_seed)
