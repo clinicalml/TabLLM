@@ -4,7 +4,7 @@
 
 This repository contains the code to reproduce the results of the paper [TabLLM: Few-shot Classification of Tabular Data with Large Language Models](https://arxiv.org/abs/2210.10723) by Stefan Hegselmann, Alejandro Buendia, Hunter Lang, Monica Agrawal, Xiaoyi Jiang, and David Sontag.
 
-## Update 10/30/2023: We Added Additional Instruction to the Readme
+## Update 10/30/2023: We Added Additional Instructions to the Readme
 
 Since several issues were raised regarding the code, we decided to add some additional instructions to the readme. We now provide all steps to reproduce an entry of our final results table. Reproducing the remaining results mainly consists of changing the experimental parameters. Thanks for everyone who provided feedback!
 
